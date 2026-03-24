@@ -1,4 +1,5 @@
 import json
+import os
 import tempfile
 import unittest
 
@@ -38,8 +39,13 @@ class InfinityAtomAgentTests(unittest.TestCase):
         with tempfile.NamedTemporaryFile("w+", encoding="utf-8", delete=False) as handle:
             json.dump({"matemática": "Ada Lovelace"}, handle)
             handle.flush()
-            updater = RankingUpdater(handle.name)
+            ranking_path = handle.name
+
+        try:
+            updater = RankingUpdater(ranking_path)
             self.assertEqual(updater.update(), {"matemática": "Ada Lovelace"})
+        finally:
+            os.unlink(ranking_path)
 
         self.assertEqual(RankingUpdater("/tmp/arquivo-inexistente.json").update(), {})
 
