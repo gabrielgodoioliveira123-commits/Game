@@ -1,7 +1,7 @@
 # Game
 
 Implementação mínima de um protocolo de resposta estruturada para um agente virtual
-orientado por simbose semântica.
+orientado por simbiose semântica.
 
 ## Como validar
 

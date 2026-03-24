@@ -1,4 +1,4 @@
-"""Ferramentas para estruturar respostas de um agente com simbose semântica."""
+"""Ferramentas para estruturar respostas de um agente com simbiose semântica."""
 
 from __future__ import annotations
 
@@ -75,45 +75,42 @@ class RespostaEstruturada:
     def __post_init__(self) -> None:
         """Garante que todas as seções obrigatórias estejam válidas desde a criação."""
 
-        try:
-            object.__setattr__(
-                self,
-                "analise_requisitos",
-                _validar_secao(
-                    SecaoResposta.ANALISE_REQUISITOS.value, self.analise_requisitos
-                ),
-            )
-            object.__setattr__(
-                self,
-                "estrategia_logica",
-                _validar_secao(
-                    SecaoResposta.ESTRATEGIA_LOGICA.value, self.estrategia_logica
-                ),
-            )
-            object.__setattr__(
-                self,
-                "implementacao_tecnica",
-                _validar_secao(
-                    SecaoResposta.IMPLEMENTACAO_TECNICA.value,
-                    self.implementacao_tecnica,
-                ),
-            )
-            object.__setattr__(
-                self,
-                "guia_integracao",
-                _validar_secao(
-                    SecaoResposta.GUIA_INTEGRACAO.value, self.guia_integracao
-                ),
-            )
-            object.__setattr__(
-                self,
-                "validacao_sanidade",
-                _validar_secao(
-                    SecaoResposta.VALIDACAO_SANIDADE.value, self.validacao_sanidade
-                ),
-            )
-        except (TypeError, ValueError) as erro_validacao:
-            raise erro_validacao
+        object.__setattr__(
+            self,
+            "analise_requisitos",
+            _validar_secao(
+                SecaoResposta.ANALISE_REQUISITOS.value, self.analise_requisitos
+            ),
+        )
+        object.__setattr__(
+            self,
+            "estrategia_logica",
+            _validar_secao(
+                SecaoResposta.ESTRATEGIA_LOGICA.value, self.estrategia_logica
+            ),
+        )
+        object.__setattr__(
+            self,
+            "implementacao_tecnica",
+            _validar_secao(
+                SecaoResposta.IMPLEMENTACAO_TECNICA.value,
+                self.implementacao_tecnica,
+            ),
+        )
+        object.__setattr__(
+            self,
+            "guia_integracao",
+            _validar_secao(
+                SecaoResposta.GUIA_INTEGRACAO.value, self.guia_integracao
+            ),
+        )
+        object.__setattr__(
+            self,
+            "validacao_sanidade",
+            _validar_secao(
+                SecaoResposta.VALIDACAO_SANIDADE.value, self.validacao_sanidade
+            ),
+        )
 
     def para_dict(self) -> Dict[str, str]:
         """Converte a resposta para um dicionário simples e integrável.
