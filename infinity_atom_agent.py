@@ -143,8 +143,9 @@ class PhilosophyEngine:
         }
         self.primary_school = "tomismo"
 
-    def evaluate(self, _situation: Dict[str, Any]) -> Dict[str, float]:
+    def evaluate(self, situation: Dict[str, Any]) -> Dict[str, float]:
         """Retorna um escore de adequação para cada escola filosófica."""
+        _ = situation
         return {name: random.random() for name in self.schools}
 
 

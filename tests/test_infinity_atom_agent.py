@@ -40,6 +40,7 @@ class InfinityAtomAgentTests(unittest.TestCase):
             json.dump({"matemática": "Ada Lovelace"}, handle)
             handle.flush()
             ranking_path = handle.name
+        missing_path = f"{ranking_path}.missing"
 
         try:
             updater = RankingUpdater(ranking_path)
@@ -47,7 +48,7 @@ class InfinityAtomAgentTests(unittest.TestCase):
         finally:
             os.unlink(ranking_path)
 
-        self.assertEqual(RankingUpdater("/tmp/arquivo-inexistente.json").update(), {})
+        self.assertEqual(RankingUpdater(missing_path).update(), {})
 
     def test_memory_recall_and_simulated_learning(self) -> None:
         agent = InfinityAtomAgent()
